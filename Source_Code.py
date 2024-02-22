@@ -76,7 +76,7 @@ def play(txt):
 
 
 def reset():
-    global lb12, lb22, score1, score2, lb14, lb25, frame4, Sys_batting, Plr_batting
+    global lb12, lb22, score1, score2, lb14, lb25, frame4, Sys_batting, Plr_batting, highscore
     frame4.place_forget()
     Sys_batting = 0
     Plr_batting = 0
@@ -97,11 +97,11 @@ def reset():
 
 
 def restart():
-    global frame4, score1, score2, Sys_batting, Plr_batting, highscore, lb12, lb22, lb
+    global frame4, score1, score2, Sys_batting, Plr_batting, highscore, lb12, lb22, lb, lb26
     frame4.place_forget()
-    if score2 > highscore:
+    if highscore < score2:
         highscore = score2
-    score2 = 0
+        lb26.config(text="HighScore: " + str(highscore))
     lb12.config(text="Score: " + "0")
     lb22.config(text="Score: " + "0")
     lb = tk.Label(window, text="OUT !!!", width=8, height=1, font=("Courier", 20, "bold"), fg="white", bg="red")
@@ -135,11 +135,13 @@ lb22 = tk.Label(frame2, text="Score: "+"5", bg="#FC46AA", font=("Arial", 18, "bo
 lb22.pack()
 lb22.config(text="Score: "+"0")
 lb23 = tk.Label(frame2, text="Click any of the button", bg="#FC46AA", font=("Arial", 12))
-lb23.place(relx=0.5, rely=0.4, anchor=tk.S)
+lb23.place(relx=0.5, rely=0.42, anchor=tk.S)
 lb24 = tk.Label(frame2, text=" You are Batting🦇 ", bg="#FC46AA", font=("Arial", 15, "bold"))
 lb24.pack(side=tk.BOTTOM, pady=10)
 lb25 = tk.Label(frame2, text="", bg="#FC46AA", font=("Arial", 25, "bold"))
 lb25.place(relx=0.5, rely=0.8, anchor=tk.CENTER)
+lb26 = tk.Label(frame2, text="HighScore: "+str(highscore), bg="#FC46AA", font=("Arial", 12))
+lb26.place(relx=0.5, rely=0.26, anchor=tk.S)
 
 frame3 = tk.Frame(frame2, bg="#FC46AA")
 frame3.pack(side=tk.TOP, fill=tk.X, expand=True)
@@ -161,12 +163,12 @@ frame4 = tk.Frame(window, bg="black")
 lb41 = tk.Label(frame4, text="GAME OVER !\n Click RESTART to continue", font=("Arial", 20, "bold"), bg="black",
                 fg="white")
 lb41.place(relx=0.5, rely=0.4, anchor=tk.CENTER)
-b41 = tk.Button(frame4, text="RESTART", font=("Arial", 15, "bold"), bg="#4CBB17", fg="black", command=lambda: reset())
+b41 = tk.Button(frame4, text="RESTART", font=("Arial", 15, "bold"), bg="#4CBB17", fg="black", command=lambda: restart())
 b41.place(relx=0.5, rely=0.51, anchor=tk.CENTER)
 
 
 button = tk.Button(window, text="RESET", width=7, height=1, font=("Courier", 12, "bold"), fg="black",
-                   command=lambda: restart())
+                   command=lambda: reset())
 button.pack(side=tk.TOP, fill=tk.X, expand=True)  # Expand horizontally to fill available space
 button.place(relx=0.5, rely=0.21, anchor=tk.CENTER)
 lb = tk.Label(window, text="OUT !!!", width=8, height=1, font=("Courier", 20, "bold"), fg="white", bg="red")
