@@ -27,7 +27,7 @@ def buttons_clicked(txt):
 
 
 def play(txt):
-    global score1, lb14, Sys_batting, Plr_batting
+    global score1, lb14, Sys_batting, Plr_batting, lb42
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     random_num = random.choice(numbers)
     lb14.config(text=random_num)
@@ -65,6 +65,7 @@ def play(txt):
             button.place_forget()
             frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=1000, height=1000)
             lb.config(text="System Won")
+            lb42.config(text="System Score: "+str(score1)+"\nYou Score: "+str(score2)+"\n\nYou Lose")
             return
         elif (Plr_batting == 1) and (score1 < score2):
             print("\nGAME OVER\nSystem Score: "+str(score1)+"\nPlayer Score: "+str(score2))
@@ -72,6 +73,7 @@ def play(txt):
             button.place_forget()
             frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=1000, height=1000)
             lb.config(text="Player Won")
+            lb42.config(text="System Score: "+str(score1)+"\nYou Score: "+str(score2)+"\n\nYou Won")
             return
 
     if Plr_batting == 2 and Sys_batting == 2:
@@ -79,6 +81,12 @@ def play(txt):
         lb.place_forget()
         button.place_forget()
         frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=1000, height=1000)
+        if score1 < score2:
+            status = "Won"
+        else:
+            status = "Lose"
+        lb42.config(text="System Score: " + str(score1) + "\nYou Score: " + str(score2) + "\n\nYou "+status)
+
     # end of function
 
 
@@ -173,7 +181,9 @@ frame4 = tk.Frame(window, bg="black")
 lb41 = tk.Label(frame4, text="GAME OVER !\n\n Click  RESTART  to continue", font=("Arial", 20, "bold"), bg="black",
                 fg="white")
 lb41.place(relx=0.5, rely=0.4, anchor=tk.CENTER)
-b41 = tk.Button(frame4, text="RESTART", font=("Arial", 15, "bold"), bg="#4CBB17", fg="black", command=lambda: restart())
+lb42 = tk.Label(frame4, text="", bg="black", fg="white", font=("Arial", 15, "bold"))
+lb42.place(relx=0.5, rely=0.63, anchor=tk.CENTER)
+b41 = tk.Button(frame4, text="RESTART", font=("Arial", 15, "bold"), bg="#03C04A", fg="black", command=lambda: restart())
 b41.place(relx=0.5, rely=0.51, anchor=tk.CENTER)
 
 
