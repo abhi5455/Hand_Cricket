@@ -59,12 +59,14 @@ def play(txt):
         if (Sys_batting == 1) and (score1 > score2):
             print("GAME OVERR")
             lb.place_forget()
+            button.place_forget()
             frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=700, height=700)
             lb.config(text="System Won")
             return
         elif (Plr_batting == 1) and (score1 < score2):
             print("GAME OVERR")
             lb.place_forget()
+            button.place_forget()
             frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=700, height=700)
             lb.config(text="Player Won")
             return
@@ -72,6 +74,7 @@ def play(txt):
     if Plr_batting == 2 and Sys_batting == 2:
         print("GAME OVER")
         lb.place_forget()
+        button.place_forget()
         frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=700, height=700)
 
 
@@ -105,6 +108,7 @@ def restart():
     lb12.config(text="Score: " + "0")
     lb22.config(text="Score: " + "0")
     lb = tk.Label(window, text="OUT !!!", width=8, height=1, font=("Courier", 20, "bold"), fg="white", bg="red")
+    button.place(relx=0.5, rely=0.21, anchor=tk.CENTER)
     reset()
 
 
