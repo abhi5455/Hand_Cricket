@@ -1,56 +1,85 @@
 import tkinter as tk
 import random
+
 # Setting Main Frame
 window = tk.Tk()
-window.title("Cricket")
+window.title("Let's Cricket")
 window.geometry("700x600+20+20")
 window.iconbitmap("./imgIcon.ico")
 window.configure(bg="white")
-# window.attributes("-topmost",1)
 
 score1 = 0
 score2 = 0
-batting=True
+highscore = 0
+Sys_batting = 0
+Plr_batting = 0
 
 
 def buttons_clicked(txt):
-    global score2,lb22, lb25,lb
+    global score2,lb22, lb25,lb, Sys_batting, Plr_batting
     lb.place_forget()
-    score2 += int(txt)
+    if Plr_batting:
+        score2 += int(txt)
     lb25.config(text=txt)
-    #lb22.config(text="Score: "+str(score2))
-    print(txt)
+    print(txt,end=" ")
     play(txt)
 
 
 def play(txt):
-    global batting,score1, lb14
+    global score1, lb14, Sys_batting, Plr_batting
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     random_num = random.choice(numbers)
     lb14.config(text=random_num)
     num=int(txt)
-    if not batting:
+    if Sys_batting == 1:
         score1 += random_num
     if num == random_num:
         lb.place(relx=0.5, rely=0.821, anchor=tk.CENTER)
-        frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=700, height=700)
-        if batting:
+        if Plr_batting == 1:
             print("Player out")
-            batting = False
-        else:
+            Plr_batting = 2
+            if Sys_batting == 0:
+                Sys_batting = 1
+                lb24.config(text=" You are Bowling🏐 ")
+                lb13.config(text="System is Batting🦇")
+        elif Sys_batting == 1:
             print("System Out")
-            batting = True
+            Sys_batting = 2
+            if Plr_batting == 0:
+                Plr_batting = 1
+                lb24.config(text=" You are Batting🦇 ")
+                lb13.config(text="System is Bowling🏐")
     else:
-        if batting:
+        if Plr_batting:
             lb22.config(text="Score: " + str(score2))
-
         else:
             lb12.config(text="Score: " + str(score1))
 
+    if (score1 > 0) and (score2 > 0):
+        if (Sys_batting==1) and (score1 > score2):
+            print("GAME OVERR")
+            lb.place_forget()
+            frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=700, height=700)
+            lb.config(text="System Won")
+            return
+        elif (Plr_batting==1) and (score1 < score2):
+            print("GAME OVERR")
+            lb.place_forget()
+            frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=700, height=700)
+            lb.config(text="Player Won")
+            return
+
+    if Plr_batting == 2 and Sys_batting == 2:
+        print("GAME OVER")
+        lb.place_forget()
+        frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=700, height=700)
+
 
 def reset():
-    global lb12, lb22, score1, score2, lb13, lb24, lb14, lb25, frame4
+    global lb12, lb22, score1, score2, lb13, lb24, lb14, lb25, frame4, Sys_batting, Plr_batting
     frame4.place_forget()
+    Sys_batting = 0
+    Plr_batting = 0
     lb12.config(text="Score: " + "0")
     lb22.config(text="Score: " + "0")
     lb24.config(text="")
@@ -60,21 +89,38 @@ def reset():
     score1 = 0
     score2 = 0
     if random.choice([1, 2]) == 1:
+        Sys_batting = 1
         lb24.config(text=" You are Bowling🏐 ")
         lb13.config(text="System is Batting🦇")
     else:
+        Plr_batting = 1
         lb24.config(text=" You are Batting🦇 ")
         lb13.config(text="System is Bowling🏐")
 
 
 def setall():
-    global lb25,lb14
+    global lb25,lb14,Sys_batting,Plr_batting
     if random.choice([1, 2]) == 1:
+        Sys_batting = 1
         lb24.config(text=" You are Bowling🏐 ")
         lb13.config(text="System is Batting🦇")
     else:
+        Plr_batting = 1
         lb24.config(text=" You are Batting🦇 ")
         lb13.config(text="System is Bowling🏐")
+
+
+def restart():
+    global frame4,score1,score2,Sys_batting,Plr_batting,highscore,lb12,lb22,lb
+    frame4.place_forget()
+    if score2 > highscore:
+        highscore = score2
+    score2 = 0
+    lb12.config(text="Score: " + "0")
+    lb22.config(text="Score: " + "0")
+    lb = tk.Label(window, text="OUT !!!", width=8, height=1, font=("Courier", 20, "bold"), fg="white", bg="red")
+    reset()
+
 
 
 # Creating Frames
@@ -122,7 +168,7 @@ k = 0
 for i in range(10):
     b.append(tk.Button(frame3, text=i+1, command=lambda num=i+1: buttons_clicked(num),
                width=3, height=2,  # Set width and height of the button
-                fg="black" ,# Set background and foreground (text) colors
+                fg="black" ,bg ="#FEC5E5",# Set background and foreground (text) colors
                font=("Arial", 12,"bold"),  # Set font family and size
                relief=tk.RAISED,  # Set relief style (BORDER, FLAT, RAISED, SUNKEN)
                borderwidth=4,  # Set border width
@@ -134,10 +180,14 @@ for i in range(10):
         k=0
 
 frame4=tk.Frame(window, bg="black")
+lb41=tk.Label(frame4,text="GAME OVER !\n Click RESTART to continue", font=("Arial",20,"bold"),bg="black",fg="white")
+lb41.place(relx=0.5, rely=0.4, anchor=tk.CENTER)
+b41=tk.Button(frame4,text="RESTART", font=("Arial",15,"bold"),bg="#4CBB17",fg="black",command=lambda:reset())
+b41.place(relx=0.5, rely=0.51, anchor=tk.CENTER)
 #frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=600, height=600)
 
 
-button = tk.Button(window, text="RESET", width=7, height=1, font=("Courier",12,"bold"), fg="black", command=lambda: reset())
+button = tk.Button(window, text="RESET", width=7, height=1, font=("Courier",12,"bold"), fg="black", command=lambda: restart())
 button.pack(side=tk.TOP, fill=tk.X, expand=True)  # Expand horizontally to fill available space
 button.place(relx=0.5, rely=0.21, anchor=tk.CENTER)
 lb =tk.Label(window,text="OUT !!!",width=8, height=1, font=("Courier",20,"bold"), fg="white",bg="red")
