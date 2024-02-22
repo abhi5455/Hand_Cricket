@@ -4,7 +4,7 @@ import random
 # Setting Main Frame
 window = tk.Tk()
 window.title("Let's Cricket")
-window.geometry("700x600+20+20")
+window.geometry("700x600+400+50")
 window.iconbitmap("./imgIcon.ico")
 window.configure(bg="white")
 
@@ -23,6 +23,7 @@ def buttons_clicked(txt):
     lb25.config(text=txt)
     print(txt, end=" ")
     play(txt)
+    # end of function
 
 
 def play(txt):
@@ -60,14 +61,14 @@ def play(txt):
             print("GAME OVERR")
             lb.place_forget()
             button.place_forget()
-            frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=700, height=700)
+            frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=1000, height=1000)
             lb.config(text="System Won")
             return
         elif (Plr_batting == 1) and (score1 < score2):
             print("GAME OVERR")
             lb.place_forget()
             button.place_forget()
-            frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=700, height=700)
+            frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=1000, height=1000)
             lb.config(text="Player Won")
             return
 
@@ -75,7 +76,8 @@ def play(txt):
         print("GAME OVER")
         lb.place_forget()
         button.place_forget()
-        frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=700, height=700)
+        frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=1000, height=1000)
+    # end of function
 
 
 def reset():
@@ -97,6 +99,7 @@ def reset():
         Plr_batting = 1
         lb24.config(text=" You are Batting🦇 ")
         lb13.config(text="System is Bowling🏐")
+    # end of function
 
 
 def restart():
@@ -110,6 +113,7 @@ def restart():
     lb = tk.Label(window, text="OUT !!!", width=8, height=1, font=("Courier", 20, "bold"), fg="white", bg="red")
     button.place(relx=0.5, rely=0.21, anchor=tk.CENTER)
     reset()
+    # end of function
 
 
 # Creating Frames
