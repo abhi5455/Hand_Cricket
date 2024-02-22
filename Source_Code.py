@@ -64,7 +64,6 @@ def play(txt):
             lb.place_forget()
             button.place_forget()
             frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=1000, height=1000)
-            lb.config(text="System Won")
             lb42.config(text="System Score: "+str(score1)+"\nYou Score: "+str(score2)+"\n\nYou Lose")
             return
         elif (Plr_batting == 1) and (score1 < score2):
@@ -72,7 +71,6 @@ def play(txt):
             lb.place_forget()
             button.place_forget()
             frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=1000, height=1000)
-            lb.config(text="Player Won")
             lb42.config(text="System Score: "+str(score1)+"\nYou Score: "+str(score2)+"\n\nYou Won")
             return
 
@@ -191,6 +189,6 @@ button = tk.Button(window, text="RESET", width=7, height=1, font=("Courier", 12,
                    command=lambda: reset())
 button.pack(side=tk.TOP, fill=tk.X, expand=True)  # Expand horizontally to fill available space
 button.place(relx=0.5, rely=0.21, anchor=tk.CENTER)
-lb = tk.Label(window, text="OUT !!!", height=1, font=("Ariel", 12, "bold"), fg="white", bg="red")
+lb = tk.Label(window, text="", font=("Ariel", 12, "bold"), fg="white", bg="red")
 reset()
 window.mainloop()
