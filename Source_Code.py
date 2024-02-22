@@ -72,39 +72,39 @@ def reset():
 # frame = tk.Frame(window)
 # frame.pack(fill=tk.BOTH, expand=True,padx=10,pady=10)
 
-frame1 = tk.Frame(window, bg="lightskyblue")
+frame1 = tk.Frame(window, bg="#00FFFF")
 frame1.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-lb1 = tk.Label(frame1, text="SYSTEM", bg="lightskyblue", fg="white", font=("Arial",22,"bold","underline"))
+lb1 = tk.Label(frame1, text="SYSTEM", bg="#00FFFF", fg="#040406", font=("Arial",22,"bold","underline"))
 lb1.pack(side=tk.TOP, expand=False, pady=10)
-lb11 = tk.Label(frame1, text="", bg="lightskyblue", font=("Arial",15,""))
+lb11 = tk.Label(frame1, text="", bg="#00FFFF", font=("Arial",15,""))
 lb11.pack()
-lb12 = tk.Label(frame1, text="Score: "+"0", bg="lightskyblue", font=("Arial", 18, "bold"))
+lb12 = tk.Label(frame1, text="Score: "+"0", bg="#00FFFF", font=("Arial", 18, "bold"))
 lb12.pack()
-lb13 = tk.Label(frame1, text="System is Batting", bg="lightskyblue", font=("Arial", 15, "bold"))
+lb13 = tk.Label(frame1, text="System is Batting", bg="#00FFFF", font=("Arial", 15, "bold"))
 lb13.pack(side=tk.BOTTOM, pady=10)
-lb14 = tk.Label(frame1,text="", bg="lightskyblue", font=("Arial", 25, "bold"))
+lb14 = tk.Label(frame1,text="", bg="#00FFFF", font=("Arial", 25, "bold"))
 lb14.place(relx=0.5,rely=0.8, anchor=tk.CENTER)
 img= tk.PhotoImage(file="img.png")
-lb15 = tk.Label(image=img,width=250, height=250,bg="lightskyblue")
+lb15 = tk.Label(image=img,width=250, height=250,bg="#00FFFF")
 lb15.place(relx=0.25,rely=0.52,anchor=tk.CENTER)
 
-frame2 = tk.Frame(window, bg="lightgreen")
+frame2 = tk.Frame(window, bg="#FC46AA")
 frame2.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
-lb2 = tk.Label(frame2,text="PLAYER",bg="lightgreen",fg="white",font=("Arial",22,"bold","underline"))
+lb2 = tk.Label(frame2,text="PLAYER",bg="#FC46AA",fg="white",font=("Arial",22,"bold","underline"))
 lb2.pack(side=tk.TOP, expand=False, pady=10)
-lb21 = tk.Label(frame2, text="", bg="lightgreen", font=("Arial",15,""))
+lb21 = tk.Label(frame2, text="", bg="#FC46AA", font=("Arial",15,""))
 lb21.pack()
-lb22 = tk.Label(frame2, text="Score: "+"5", bg="lightgreen", font=("Arial", 18, "bold"))
+lb22 = tk.Label(frame2, text="Score: "+"5", bg="#FC46AA", font=("Arial", 18, "bold"))
 lb22.pack()
 lb22.config(text="Score: "+"0")
-lb23 = tk.Label(frame2, text="Click any of the button", bg="lightgreen", font=("Arial", 12))
+lb23 = tk.Label(frame2, text="Click any of the button", bg="#FC46AA", font=("Arial", 12))
 lb23.place(relx=0.5, rely=0.4, anchor=tk.S)
-lb24 = tk.Label(frame2, text=" You are Batting ", bg="lightgreen", font=("Arial", 15, "bold"))
+lb24 = tk.Label(frame2, text=" You are Batting ", bg="#FC46AA", font=("Arial", 15, "bold"))
 lb24.pack(side=tk.BOTTOM, pady=10)
-lb25 = tk.Label(frame2,text="", bg="lightgreen", font=("Arial", 25, "bold"))
+lb25 = tk.Label(frame2,text="", bg="#FC46AA", font=("Arial", 25, "bold"))
 lb25.place(relx=0.5,rely=0.8, anchor=tk.CENTER)
 
-frame3 = tk.Frame(frame2, bg="lightgreen")
+frame3 = tk.Frame(frame2, bg="#FC46AA")
 frame3.pack(side=tk.TOP, fill=tk.X, expand=True)  # Expand horizontally to fill available space
 frame3.place(relx=0.5, rely=0.53, anchor=tk.CENTER)
 b = []
@@ -113,11 +113,11 @@ k = 0
 for i in range(10):
     b.append(tk.Button(frame3, text=i+1, command=lambda num=i+1: buttons_clicked(num),
                width=3, height=2,  # Set width and height of the button
-                fg="black",  # Set background and foreground (text) colors
+                fg="black",bg="#F8F4FF" ,# Set background and foreground (text) colors
                font=("Arial", 12,"bold"),  # Set font family and size
                relief=tk.RAISED,  # Set relief style (BORDER, FLAT, RAISED, SUNKEN)
                borderwidth=4,  # Set border width
-               padx=2, pady=5) )
+               padx=3, pady=5) )
     b[i].grid(row=j, column=k)
     k=k+1
     if i==4:
