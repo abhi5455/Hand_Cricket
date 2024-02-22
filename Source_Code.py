@@ -84,7 +84,6 @@ def play(txt):
         else:
             status = "Lose"
         lb42.config(text="System Score: " + str(score1) + "\nYou Score: " + str(score2) + "\n\nYou "+status)
-
     # end of function
 
 
