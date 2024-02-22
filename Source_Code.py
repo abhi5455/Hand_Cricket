@@ -8,7 +8,6 @@ window.iconbitmap("./imgIcon.ico")
 window.configure(bg="white")
 # window.attributes("-topmost",1)
 
-
 score1 = 0
 score2 = 0
 batting=True
