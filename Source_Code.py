@@ -181,6 +181,6 @@ button = tk.Button(window, text="RESET", width=7, height=1, font=("Courier", 12,
                    command=lambda: reset())
 button.pack(side=tk.TOP, fill=tk.X, expand=True)  # Expand horizontally to fill available space
 button.place(relx=0.5, rely=0.21, anchor=tk.CENTER)
-lb = tk.Label(window, text="OUT !!!", height=1, font=("Courier", 12, "bold"), fg="white", bg="red")
+lb = tk.Label(window, text="OUT !!!", height=1, font=("Ariel", 12, "bold"), fg="white", bg="red")
 reset()
 window.mainloop()
