@@ -76,30 +76,16 @@ def play(txt):
 
 
 def reset():
-    global lb12, lb22, score1, score2, lb13, lb24, lb14, lb25, frame4, Sys_batting, Plr_batting
+    global lb12, lb22, score1, score2, lb14, lb25, frame4, Sys_batting, Plr_batting
     frame4.place_forget()
     Sys_batting = 0
     Plr_batting = 0
     lb12.config(text="Score: " + "0")
     lb22.config(text="Score: " + "0")
-    lb24.config(text="")
-    lb13.config(text="")
     lb14.config(text="")
     lb25.config(text="")
     score1 = 0
     score2 = 0
-    if random.choice([1, 2]) == 1:
-        Sys_batting = 1
-        lb24.config(text=" You are Bowling🏐 ")
-        lb13.config(text="System is Batting🦇")
-    else:
-        Plr_batting = 1
-        lb24.config(text=" You are Batting🦇 ")
-        lb13.config(text="System is Bowling🏐")
-
-
-def setall():
-    global lb25, lb14, Sys_batting, Plr_batting
     if random.choice([1, 2]) == 1:
         Sys_batting = 1
         lb24.config(text=" You are Bowling🏐 ")
@@ -184,5 +170,5 @@ button = tk.Button(window, text="RESET", width=7, height=1, font=("Courier", 12,
 button.pack(side=tk.TOP, fill=tk.X, expand=True)  # Expand horizontally to fill available space
 button.place(relx=0.5, rely=0.21, anchor=tk.CENTER)
 lb = tk.Label(window, text="OUT !!!", width=8, height=1, font=("Courier", 20, "bold"), fg="white", bg="red")
-setall()
+reset()
 window.mainloop()
