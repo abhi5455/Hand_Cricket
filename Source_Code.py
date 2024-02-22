@@ -4,7 +4,7 @@ import random
 window = tk.Tk()
 window.title("Cricket")
 window.geometry("700x600+20+20")
-window.iconbitmap("./Icon.ico")
+window.iconbitmap("./imgIcon.ico")
 window.configure(bg="white")
 # window.attributes("-topmost",1)
 
