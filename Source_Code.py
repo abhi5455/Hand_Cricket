@@ -18,7 +18,7 @@ Plr_batting = 0
 def buttons_clicked(txt):
     global score2, lb22, lb25, lb, Sys_batting, Plr_batting
     lb.place_forget()
-    if Plr_batting:
+    if Plr_batting == 1:
         score2 += int(txt)
     lb25.config(text=txt)
     print(txt, end=" ")
@@ -37,35 +37,35 @@ def play(txt):
     if num == random_num:
         lb.place(relx=0.5, rely=0.821, anchor=tk.CENTER)
         if Plr_batting == 1:
-            print("Player out")
+            print("\nPlayer out")
             Plr_batting = 2
             if Sys_batting == 0:
                 Sys_batting = 1
                 lb24.config(text=" You are Bowling🏐 ")
                 lb13.config(text="System is Batting🦇")
         elif Sys_batting == 1:
-            print("System Out")
+            print("\nSystem Out")
             Sys_batting = 2
             if Plr_batting == 0:
                 Plr_batting = 1
                 lb24.config(text=" You are Batting🦇 ")
                 lb13.config(text="System is Bowling🏐")
     else:
-        if Plr_batting:
+        if Plr_batting ==1:
             lb22.config(text="Score: " + str(score2))
         else:
             lb12.config(text="Score: " + str(score1))
 
     if (score1 > 0) and (score2 > 0):
         if (Sys_batting == 1) and (score1 > score2):
-            print("GAME OVERR")
+            print("\nGAME OVER\nSystem Score: "+str(score1)+"\nPlayer Score: "+str(score2))
             lb.place_forget()
             button.place_forget()
             frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=1000, height=1000)
             lb.config(text="System Won")
             return
         elif (Plr_batting == 1) and (score1 < score2):
-            print("GAME OVERR")
+            print("\nGAME OVER\nSystem Score: "+str(score1)+"\nPlayer Score: "+str(score2))
             lb.place_forget()
             button.place_forget()
             frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=1000, height=1000)
@@ -73,7 +73,7 @@ def play(txt):
             return
 
     if Plr_batting == 2 and Sys_batting == 2:
-        print("GAME OVER")
+        print("\nGAME OVER\nSystem Score: "+str(score1)+"\nPlayer Score: "+str(score2))
         lb.place_forget()
         button.place_forget()
         frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=1000, height=1000)
