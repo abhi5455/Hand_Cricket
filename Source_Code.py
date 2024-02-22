@@ -53,7 +53,7 @@ def play(txt):
                 lb24.config(text=" You are Batting🦇 ")
                 lb13.config(text="System is Bowling🏐")
     else:
-        if Plr_batting ==1:
+        if Plr_batting == 1:
             lb22.config(text="Score: " + str(score2))
         else:
             lb12.config(text="Score: " + str(score1))
