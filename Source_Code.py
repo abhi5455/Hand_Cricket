@@ -67,6 +67,16 @@ def reset():
         lb13.config(text="System is Bowling🏐")
 
 
+def setall():
+    global lb25,lb14
+    if random.choice([1, 2]) == 1:
+        lb24.config(text=" You are Bowling🏐 ")
+        lb13.config(text="System is Batting🦇")
+    else:
+        lb24.config(text=" You are Batting🦇 ")
+        lb13.config(text="System is Bowling🏐")
+
+
 # Creating Frames
 # frame = tk.Frame(window)
 # frame.pack(fill=tk.BOTH, expand=True,padx=10,pady=10)
@@ -79,7 +89,7 @@ lb11 = tk.Label(frame1, text="", bg="#00FFFF", font=("Arial",15,""))
 lb11.pack()
 lb12 = tk.Label(frame1, text="Score: "+"0", bg="#00FFFF", font=("Arial", 18, "bold"))
 lb12.pack()
-lb13 = tk.Label(frame1, text="System is Batting", bg="#00FFFF", font=("Arial", 15, "bold"))
+lb13 = tk.Label(frame1, text="System is Bowling🏐", bg="#00FFFF", font=("Arial", 15, "bold"))
 lb13.pack(side=tk.BOTTOM, pady=10)
 lb14 = tk.Label(frame1,text="", bg="#00FFFF", font=("Arial", 25, "bold"))
 lb14.place(relx=0.5,rely=0.8, anchor=tk.CENTER)
@@ -98,7 +108,7 @@ lb22.pack()
 lb22.config(text="Score: "+"0")
 lb23 = tk.Label(frame2, text="Click any of the button", bg="#FC46AA", font=("Arial", 12))
 lb23.place(relx=0.5, rely=0.4, anchor=tk.S)
-lb24 = tk.Label(frame2, text=" You are Batting ", bg="#FC46AA", font=("Arial", 15, "bold"))
+lb24 = tk.Label(frame2, text=" You are Batting🦇 ", bg="#FC46AA", font=("Arial", 15, "bold"))
 lb24.pack(side=tk.BOTTOM, pady=10)
 lb25 = tk.Label(frame2,text="", bg="#FC46AA", font=("Arial", 25, "bold"))
 lb25.place(relx=0.5,rely=0.8, anchor=tk.CENTER)
@@ -112,7 +122,7 @@ k = 0
 for i in range(10):
     b.append(tk.Button(frame3, text=i+1, command=lambda num=i+1: buttons_clicked(num),
                width=3, height=2,  # Set width and height of the button
-                fg="black",bg="#F8F4FF" ,# Set background and foreground (text) colors
+                fg="black" ,# Set background and foreground (text) colors
                font=("Arial", 12,"bold"),  # Set font family and size
                relief=tk.RAISED,  # Set relief style (BORDER, FLAT, RAISED, SUNKEN)
                borderwidth=4,  # Set border width
@@ -132,4 +142,7 @@ button.pack(side=tk.TOP, fill=tk.X, expand=True)  # Expand horizontally to fill 
 button.place(relx=0.5, rely=0.21, anchor=tk.CENTER)
 lb =tk.Label(window,text="OUT !!!",width=8, height=1, font=("Courier",20,"bold"), fg="white",bg="red")
 #lb.place(relx=0.5, rely=0.821, anchor=tk.CENTER)
+setall()
 window.mainloop()
+
+
