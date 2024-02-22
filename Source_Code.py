@@ -61,11 +61,11 @@ def reset():
     score1 = 0
     score2 = 0
     if random.choice([1, 2]) == 1:
-        lb24.config(text=" You are Bowling ")
-        lb13.config(text="System is Batting")
+        lb24.config(text=" You are Bowling🏐 ")
+        lb13.config(text="System is Batting🦇")
     else:
-        lb24.config(text=" You are Batting ")
-        lb13.config(text="System is Bowling")
+        lb24.config(text=" You are Batting🦇 ")
+        lb13.config(text="System is Bowling🏐")
 
 
 # Creating Frames
