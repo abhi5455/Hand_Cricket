@@ -27,7 +27,7 @@ def buttons_clicked(txt):
 
 
 def play(txt):
-    global score1, lb14, Sys_batting, Plr_batting, lb42
+    global score1, lb14, Sys_batting, Plr_batting, lb42, lb
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     random_num = random.choice(numbers)
     lb14.config(text=random_num)
