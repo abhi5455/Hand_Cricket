@@ -27,7 +27,7 @@ def buttons_clicked(txt):
 
 
 def play(txt):
-    global score1, lb14, Sys_batting, Plr_batting, lb42, lb
+    global score1, lb14, Sys_batting, Plr_batting, lb42, lb, score2
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     random_num = random.choice(numbers)
     lb14.config(text=random_num)
@@ -38,6 +38,7 @@ def play(txt):
         lb.place(relx=0.5, rely=0.821, anchor=tk.CENTER)
         if Plr_batting == 1:
             print("\nPlayer out")
+            score2 -= int(txt)
             lb.config(text=" Player is Out ! ")
             Plr_batting = 2
             if Sys_batting == 0:
@@ -46,6 +47,7 @@ def play(txt):
                 lb13.config(text="System is Batting🦇")
         elif Sys_batting == 1:
             print("\nSystem Out")
+            score1 -= random_num
             lb.config(text=" System is Out ! ")
             Sys_batting = 2
             if Plr_batting == 0:
