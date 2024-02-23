@@ -64,14 +64,14 @@ def play(txt):
             lb.place_forget()
             button.place_forget()
             frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=1000, height=1000)
-            lb42.config(text="System Score: "+str(score1)+"\nYou Score: "+str(score2)+"\n\nYou Lose")
+            lb42.config(text="System Score: "+str(score1)+"\nYour Score: "+str(score2)+"\n\nYou Lose")
             return
         elif (Plr_batting == 1) and (score1 < score2):
             print("\nGAME OVER\nSystem Score: "+str(score1)+"\nPlayer Score: "+str(score2))
             lb.place_forget()
             button.place_forget()
             frame4.place(relx=0.5, rely=0.53, anchor=tk.CENTER, width=1000, height=1000)
-            lb42.config(text="System Score: "+str(score1)+"\nYou Score: "+str(score2)+"\n\nYou Won")
+            lb42.config(text="System Score: "+str(score1)+"\nYour Score: "+str(score2)+"\n\nYou Won")
             return
 
     if Plr_batting == 2 and Sys_batting == 2:
@@ -83,7 +83,7 @@ def play(txt):
             status = "Won"
         else:
             status = "Lose"
-        lb42.config(text="System Score: " + str(score1) + "\nYou Score: " + str(score2) + "\n\nYou "+status)
+        lb42.config(text="System Score: " + str(score1) + "\nYour Score: " + str(score2) + "\n\nYou "+status)
     # end of function
 
 
