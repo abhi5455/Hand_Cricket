@@ -38,7 +38,7 @@ def play(txt):
         lb.place(relx=0.5, rely=0.821, anchor=tk.CENTER)
         if Plr_batting == 1:
             print("\nPlayer out")
-            lb.config(text=" Player Out! ")
+            lb.config(text=" Player is Out ! ")
             Plr_batting = 2
             if Sys_batting == 0:
                 Sys_batting = 1
@@ -46,7 +46,7 @@ def play(txt):
                 lb13.config(text="System is Batting🦇")
         elif Sys_batting == 1:
             print("\nSystem Out")
-            lb.config(text=" System Out! ")
+            lb.config(text=" System is Out ! ")
             Sys_batting = 2
             if Plr_batting == 0:
                 Plr_batting = 1
@@ -117,7 +117,7 @@ def restart():
         lb26.config(text="HighScore: " + str(highscore))
     lb12.config(text="Score: " + "0")
     lb22.config(text="Score: " + "0")
-    lb = tk.Label(window, text="", font=("Courier", 12, "bold"), fg="white", bg="red")
+    lb = tk.Label(window, text="", font=("Ariel", 12, "bold"), fg="white", bg="red")
     button.place(relx=0.5, rely=0.21, anchor=tk.CENTER)
     reset()
     # end of function
@@ -188,6 +188,6 @@ button = tk.Button(window, text="RESET", width=7, height=1, font=("Courier", 12,
                    command=lambda: reset())
 button.pack(side=tk.TOP, fill=tk.X, expand=True)  # Expand horizontally to fill available space
 button.place(relx=0.5, rely=0.21, anchor=tk.CENTER)
-lb = tk.Label(window, text="", font=("Courier", 12, "bold"), fg="white", bg="red")
+lb = tk.Label(window, text="", font=("Ariel", 12, "bold"), fg="white", bg="red")
 reset()
 window.mainloop()
